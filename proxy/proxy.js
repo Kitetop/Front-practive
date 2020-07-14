@@ -36,7 +36,7 @@
     try {
         person.set('name', 'null');
         person.set('age', 18);
-        person.set('sex', 1);
+        person.set('sex', 0);
     } catch(e) {
         // e 的内容会等于throw 抛出的内容， 此处等于 false
         console.log(e);
@@ -94,6 +94,40 @@
 {
     // ES6
     let person = {
-        name: 'kitetop'
+        name: 'kitetop',
+        age: 24,
+        sex: 1
+    }
+
+    let result = new Proxy(person, {
+        get: (target, key) => {
+            if (target.hasOwnProperty(key)) {
+                return target[key];
+            }
+            return null;
+        },
+        set: (target, key, value) => {
+            if (target.hasOwnProperty(key) && key !== 'sex') {
+                target[key] = value;
+            } else {
+                throw false;
+            }
+        }
+    });
+    /** 对于try catch 语句，只要try内部一个语句出错throw了异常，那么try语句块的剩余内容就不会
+        继续执行下去了 */
+    try {
+        result.name = 'null';
+        result.age = 18;
+        result.sex = 0;
+    } catch(e) {
+        // e 的内容会等于throw 抛出的内容， 此处等于 false
+        console.log(e, 'ES6 proxy');
+    } finally {
+        console.table({
+            name: result.name,
+            age: result.age,
+            sex: result.sex
+        });
     }
 }
