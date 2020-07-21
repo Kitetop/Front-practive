@@ -3,8 +3,9 @@
     // 数组如果有值，那么会转换成数组内部的第一个值，空数组则转换成0
     // 对象依靠valueOf 或者 toString 方法进行转换
     // 字符串若是不能转成number，则会转成 NaN， NaN和任何都不相等
-    console.log(![] == []);
-    console.log(![] === [])
+    // 引用类型转换成Boolean类型都是true
+    console.log(![] == [], '![] == []'); // true
+    console.log(![] === [], '![] === []'); // false
 }
 
 {
