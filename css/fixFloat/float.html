@@ -49,6 +49,7 @@
         <ul>
             <h6>布局规则</h6>
             <li>内部的Box会在垂直方向一个接一个的放置</li>
+            <li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</li>
             <li>每个盒子（块盒与行盒）的margin box的左边与包含border box的左边相接触，即使存在浮动也是如此</li>
             <li>BFC的区域不会与float box重叠</li>
             <li>BFC就是页面上的一个独立隔离的容器，容器里面的子元素不会影响到外面的元素，反之亦是如此</li>
