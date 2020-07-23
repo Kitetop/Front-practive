@@ -1,0 +1,59 @@
+div {
+    border: 2px solid red;
+}
+.clearfix {
+    *zoom: 1; /* 兼容 IE 6-7 */
+}
+.clearfix:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix1 {
+    *zoom: 1; /* 兼容 IE 6-7 */
+}
+.clearfix1:before, .clearfix1:after {
+    display: table; /* 可以触发BFC, BFC 可以清除浮动*/
+    content: '';
+    clear: both;
+}
+
+.p {
+    /* display: inline-flex; 行内flex */
+    color: #f55;
+    background: yellow;
+    width: 200px;
+    line-height: 100px;
+    text-align:center;
+    margin: 30px;
+}
+
+.left {
+    width: 100px;
+    height: 150px;
+    float: left;
+    background: rgb(139, 214, 78);
+    text-align: center;
+    line-height: 150px;
+    font-size: 20px;
+}
+
+.right {
+    height: 300px;
+    background: rgb(170, 54, 236);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+}
+.right_create {
+    overflow: hidden;
+    height: 300px;
+    background: rgb(170, 54, 236);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+}
+

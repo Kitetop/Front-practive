@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Float</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="./float.css" />
+</header>
+
+<body>
+    <div style="border: 5px solid blue; overflow: hidden;">
+        <h3>给父级div增加overflow属性清除浮动</h3>
+        <div>1</div>
+
+        <div style="float: right;">2</div>
+
+        <div style="float: left;">3</div>
+    </div>
+    <hr />
+    <div class="clearfix" style="border: 5px solid blue;">
+        <h3>给父级div增加 :after清除浮动 tips: content='' 以及 display=block 属性不可或缺 + clear: both</h3>
+        <div class="clearfix">1</div>
+
+        <div style="float: right;">2</div>
+
+        <div style="float: left;">3</div>
+    </div>
+    <hr />
+
+    <div class="clearfix1" style="border: 5px solid blue;">
+        <h3>给父级div 使用before和after双伪元素清除浮动 tips: display=table, content=''必不可少 + clear: both</h3>
+        <div>1</div>
+
+        <div style="float: right;">2</div>
+
+        <div style="float: left;">3</div>
+    </div>
+    <hr />
+    <div>
+        <p style="text-indent: 2em;">
+            Box是CSS布局的对象和基本单位，不同类型的box会参与不同的Formatting Context
+        <ul>
+            <h6>Box 分类</h6>
+            <li>block-level box: 参与block fomatting context(BFC)</li>
+            <li>inline-level box: 参与inline fomatting context(IFC)</li>
+            <li>run-in box:css3新增</li>
+        </ul>
+        </p>
+        <p style="text-indent: 2em;">
+        <ul>
+            <h6>布局规则</h6>
+            <li>内部的Box会在垂直方向一个接一个的放置</li>
+            <li>每个盒子（块盒与行盒）的margin box的左边与包含border box的左边相接触，即使存在浮动也是如此</li>
+            <li>BFC的区域不会与float box重叠</li>
+            <li>BFC就是页面上的一个独立隔离的容器，容器里面的子元素不会影响到外面的元素，反之亦是如此</li>
+            <li>计算BFC的高度时，浮动元素也会参与到计算之中</li>
+        </ul>
+        <ul>
+            <h6>如何创建BFC</h6>
+            <li>float的值不是none</li>
+            <li>position的值不是static或者relative</li>
+            <li>display的值是inline-block、table-cell、flex、table-caption或者inline-flex</li>
+            <li>overflow的值不是visible</li>
+        </ul>
+        </p>
+    </div>
+    <hr />
+    <div>
+        <h3>利用BFC避免margin重叠</h3>
+        <div style="height: auto; width: 100%; display: flex;">
+            <div style="flex: 1; margin: 10px;">
+                <p class="p">看看我的 margin 1是多少</p>
+                <p style="overflow: hidden;">
+                <p class="p">看看我的 margin 2是多少</p>
+                </p>
+                <p style="text-indent: 2em;">
+                    添加一个块将下面一部分包裹起来，并且设置overflow: hide
+                </p>
+            </div>
+            <div style="flex: 1; margin: 10px;">
+                <p class="p">看看我的 margin 1是多少</p>
+                <p class="p">看看我的 margin 2是多少</p>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <h3>对于浮动的重叠</h3>
+        <div style="height: auto; width: 100%; display: flex;">
+            <div style="flex: 1; margin: 10px;">
+                <div class="left">LEFT</div>
+                <div class="right_create">RIGHT</div>
+            </div>
+            <div style="flex: 1; margin: 10px;">
+                <div class="left">LEFT</div>
+                <div class="right">RIGHT</div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <h3>文字不换行用省略号代替</h3>
+        <div style="width: 100px;">
+            <p id="show" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+        </div>
+        <button onclick="show()">more</button>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    function show() {
+        let dom = document.getElementById("show");
+        dom.style.whiteSpace = 'normal';
+        console.log(dom.style.whiteSpace, 'dom')
+    }
+</script>
