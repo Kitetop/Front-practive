@@ -1,0 +1,14 @@
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+.flex_all_center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    text-indent: 2em;
+}
