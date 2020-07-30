@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>PropotypeLink</title>
+    <meta charset="utf-8">
+    <script src="./propotypeLink.js"></script>
+    <link type="text/css" rel="stylesheet" href="./propotypeLink.css" />
+</header>
+
+<body>
+    <div
+        style="display: flex; justify-content: center; align-items: center; height: 300px; width: 100%; border: 1px solid red;">
+        <div style=" border: 1px solid skyblue; width: calc(100% - 100px); height: calc(100% - 50px);">
+            <h4>当我们使用new去创建一个实例的时候，它做了如下四件事情：</h4>
+            <ul>
+                <li>为这个新的对象开辟出一块属于它的内存空间；</li>
+                <li>把函数体内部的this指到刚才新开辟的内存空间去；</li>
+                <li>将新对象的__proto__这个属性指向对应构造函数的prototype属性，把实例和原型对象关联起来；</li>
+                <li>执行函数体内的逻辑，最后即便你没有手动的return，构造函数也会帮你把这个刚创建的对象return出来。</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
