@@ -20,6 +20,27 @@
             </ul>
         </div>
     </div>
+
+    <div
+    style="display: flex; justify-content: center; align-items: center; height: 400px; width: 100%; border: 1px solid red;">
+    <div style=" border: 1px solid skyblue; width: calc(100% - 100px); height: calc(100% - 50px);">
+        <h4>构造函数的工作机理：</h4>
+        <div style="position: relative; left: 2em;">
+        <span style="color: blue;">function</span> C(a) {<br />
+            <span style="position: relative; left: 2em;">if (a) {</span> <br />
+            <span style="position: relative; left: 4em;">this.a = a; <br /></span>
+            <span style="position: relative; left: 2em;">}</span><br />
+        } <br/>
+        let <span style="color: red;">c</span> = <span style="color: blue;">new</span> C(2);
+        </div>
+        <ul>
+            <li>为c实例开辟一块属于它的内存空间；</li>
+            <li>把函数体内部的this指到刚才新开辟的内存空间去；</li>
+            <li>将新对象的__proto__这个属性指向对应构造函数的prototype属性，把实例和原型对象关联起来；</li>
+            <li>执行函数体内的逻辑，最后即便你没有手动的return，构造函数也会帮你把这个刚创建的c实例return出来。</li>
+        </ul>
+    </div>
+</div>
 </body>
 
 </html>
