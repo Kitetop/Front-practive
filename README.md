@@ -3,7 +3,7 @@
 > 文档索引
 
 文件|说明|链接
-:--:|:--:|---:
+:--|:--:|---:
 aboutThis|关于this指向的一些说明|[aboutThis](https://github.com/Kitetop/Front-practive/tree/master/aboutThis)
 closure|关于闭包以及作用域链的一些说明|[closure](https://github.com/Kitetop/Front-practive/tree/master/closure)
 css/fixFloat|关于清除浮动以及使用BFC去除margin重叠，超长文本省略号|[css/fixFloat](https://github.com/Kitetop/Front-practive/tree/master/css/fixFloat)
