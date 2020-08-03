@@ -1,0 +1,17 @@
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+.block_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block_border {
+    border: 1px red solid;
+}
+
+p {
+    text-indent: 2em;
+}
