@@ -44,19 +44,20 @@
 }
 
 {
-    var su; var err;
     function httpPromise(url) {
         /** 
          * setTimeout方法是定时程序，执行一次之后就不会在继续执行；
          * setInterval方法则是间隔一定时间反复执行某些事；
          * 定时器需要手动清除（tips：定时器即使清除了，其返回值也不会清除，之后设置的定时器的返回值会在返回值的
          * 基础上继续往后排）
-         */    
+         */
+        var su; var err;
         return new Promise((resolve, rejects) => {
             if (url) {
                 su = setInterval(() => {
                     console.log(url, 'i+++');
                     resolve(url);
+                    // 两个可以相互混用，但是不建议
                     clearTimeout(su);
                 }, 3000)
             } else {
@@ -68,17 +69,44 @@
         });
     }
 
+    /**
+     * 使用Promise解决异步问题；
+     * Promise的错误是需要通过回调函数捕获， try catch是行不通的, 而async/await和generator允许
+     */
     httpPromise('/test1').then(res => {
         return httpPromise('/test2')
     }).then(res => {
         return httpPromise();
     }).catch(e => {
         console.log(e);
-        console.log(su, 'window.su');
-        console.log(err, 'window.err');
-        clearTimeout(err);
-        console.log(err, 'window.err');
     });
-    console.log(su, 'window.su');
-    console.log(err, 'window.err');
+
+    /**
+     * 使用Generation的方式解决异步问题
+     */
+    function* httpGenerator() {
+        try {
+            let res1 = yield httpPromise('/test1');
+            console.log(res1, 'res1==');
+            let res2 = yield httpPromise('/test2');
+            console.log(res2, 'res2==');
+            let res3 = yield httpPromise();
+            console.log(res3, 'res3==');
+        } catch (e) { }
+
+    }
+    function runGenerator(gen) {
+        let it = gen(), ret;
+        (function iterate(val) {
+            ret = it.next(val);
+            if (!ret.done) {
+                if ('then' in ret.value) {
+                    ret.value.then(res => iterate(res)).catch(e => {console.log(e)});
+                } else {
+                    ret.catch(e => {})
+                }
+            }
+        })()
+    }
+    runGenerator(httpGenerator);
 }
