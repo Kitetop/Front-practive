@@ -103,7 +103,7 @@
                 if ('then' in ret.value) {
                     ret.value.then(res => iterate(res)).catch(e => {console.log(e)});
                 } else {
-                    ret.catch(e => {})
+                    
                 }
             }
         })()
