@@ -109,4 +109,27 @@
         })()
     }
     runGenerator(httpGenerator);
+
+    /**
+     * 使用async/await解决异步问题 
+     */
+    async function asyncHttp() {
+        try {
+            // await 会等到最后一个promise的状态变成完结或者出错
+            await httpPromise('/test1').then(res => {
+                return new Promise(resolve => {
+                    console.log('heiheihei===');
+                    let time = setTimeout(() => {
+                        resolve(),
+                        clearTimeout(time);
+                    }, 5000);
+                });
+            });
+            await httpPromise('/test2');
+            await httpPromise();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    asyncHttp();
 }
